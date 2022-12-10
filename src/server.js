@@ -1,3 +1,5 @@
+// Este arquivo ficará responsável por iniciar sua API
+
 require('dotenv').config();
 const app = require('./app');
 

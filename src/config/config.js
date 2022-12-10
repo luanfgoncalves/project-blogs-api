@@ -1,3 +1,5 @@
+// ESte é arquivo de configuração principal do Sequelize
+
 require('dotenv').config();
 
 const environment = process.env.NODE_ENV || 'test';

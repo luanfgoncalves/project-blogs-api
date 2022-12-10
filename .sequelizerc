@@ -1,3 +1,5 @@
+// Este arquivo é responsável por identificar os caminhos dos recursos do Sequelize
+
 const path = require('path');
 
 module.exports = {
