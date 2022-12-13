@@ -19,8 +19,26 @@ const getAllUsers = async (_req, res) => {
     const users = await userService.getAllUsers();
     return res.status(200).json(users);
   };
+
+// Req 6 - COnsulta de user por id cppt
+const getUserById = async (req, res, next) => {
+    const MSG = 'User does not exist';
+    try {
+      const { id } = req.params; 
+      const user = await userService.getUserById(id);
+  
+      if (user.type === 'USER_NOT_FOUND') {
+        return res.status(404).json({ message: MSG });
+      }
+
+      return res.status(200).json(user);
+    } catch (err) {
+      next(err);
+    }
+  };
   
 module.exports = {
   createNewUser,
   getAllUsers,
+  getUserById,
 };

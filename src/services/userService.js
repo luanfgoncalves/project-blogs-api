@@ -22,7 +22,22 @@ const getAllUsers = async () => {
     return users;
   };
 
+//  Req 6 - Busca o user pela chave primária
+const getUserById = async (id) => {
+    // findOne
+    const user = await User.findByPk(id, {
+      attributes: { exclude: ['password'] }, 
+    });
+    // console.log(user);
+    if (user === null) {
+        return { type: 'USER_NOT_FOUND' };
+    }
+
+    return user;
+  };
+
 module.exports = {
   createNewUser,
   getAllUsers,
+  getUserById,
 };
