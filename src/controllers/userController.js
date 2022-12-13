@@ -14,6 +14,13 @@ const createNewUser = async (req, res, next) => {
   }
 };
 
+// REQ 5 - get all cppt
+const getAllUsers = async (_req, res) => {
+    const users = await userService.getAllUsers();
+    return res.status(200).json(users);
+  };
+  
 module.exports = {
   createNewUser,
+  getAllUsers,
 };

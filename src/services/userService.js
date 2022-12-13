@@ -2,12 +2,12 @@ const { User } = require('../models');
 const { genToken } = require('../middlewares/jwtAuthentication');
 
 const createNewUser = async (user) => {
-  const userExist = await User.findOne({
+  const isRegistered = await User.findOne({
     details: ['id', 'email', 'displayName'],
     where: { email: user.email },
   });
 
-  if (userExist) return { type: 'USER_FOUND' };
+  if (isRegistered) return { type: 'USER_FOUND' };
 
  await User.create(user);
 
@@ -15,6 +15,14 @@ const createNewUser = async (user) => {
   return token;
 };
 
+const getAllUsers = async () => {
+    const users = await User.findAll({
+      attributes: { exclude: ['password'] }, // exclude limita o que é retornado, ORM02
+    });
+    return users;
+  };
+
 module.exports = {
   createNewUser,
+  getAllUsers,
 };
