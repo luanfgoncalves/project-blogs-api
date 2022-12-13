@@ -5,7 +5,7 @@ const loginValidation = async (req, res, next) => {
       const auth = await loginService.authToken(req.body);
       if (auth.type === 'USER_NOT_FOUND') {
  return res
-      .status(400)
+      .status(400) // bad request
       .json({ message: 'Invalid fields' }); 
 }
 
