@@ -4,8 +4,8 @@ const { tokenValidation } = require('../middlewares/tokenValidation');
 
 const blogPostRouter = express.Router();
 
-// blogPostRouter.post('/', tokenValidation, blogblogPostController.addNewPost);
+// blogPostRouter.post('/', tokenValidation, blogblogPostController.addNewPost); req 12
 blogPostRouter.get('/', tokenValidation, blogPostController.getAllPosts);
-// postRouter.get('/:id', tokenValidation, blogPostController.getPostById);
+blogPostRouter.get('/:id', tokenValidation, blogPostController.getOnePost);
 
 module.exports = blogPostRouter;
